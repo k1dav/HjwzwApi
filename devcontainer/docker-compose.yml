@@ -1,0 +1,52 @@
+version: '3.3'
+services:
+  redis:
+    image: redis:5.0.5-buster
+    container_name: redis
+    restart: on-failure:5
+    command: "redis-server --requirepass RedisNyv775 --appendonly yes"
+    networks:
+      - hjwzw-net
+    volumes:
+      - redis-volume:/data
+
+  postgres:
+    image: postgres:11.5-alpine
+    container_name: postgres
+    restart: on-failure:5
+    environment:
+      POSTGRES_PASSWORD: "PostNyv775"
+      POSTGRES_USER: "admin"
+      POSTGRES_DB: "hjwzw"
+    ports:
+      - "5432"
+    networks:
+      - hjwzw-net
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+
+  hjwzw_host:
+    build:
+      context: ./
+      dockerfile: ./build/host/Dockerfile
+    container_name: hjwzw_host
+    user: sung
+    tty:
+      true
+    ports:
+      - "5050"
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - hjwzw-net
+
+networks:
+  hjwzw-net:
+    external: true
+
+volumes:
+  postgres-volume:
+    external: true
+  redis-volume:
+    external: true

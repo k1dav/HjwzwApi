@@ -1,0 +1,23 @@
+{
+    "name": "hjwzw_host",
+    "workspaceFolder": "/workspace",
+    "dockerComposeFile": [
+        "../docker-compose.yml",
+        "../docker-compose.remote.yml"
+    ],
+    "service": "hjwzw_host",
+    "extensions": [
+        "coenraads.bracket-pair-colorizer-2",
+        "ms-python.python",
+        "mohsen1.prettify-json",
+        "humao.rest-client"
+    ],
+    "settings": {
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.linting.pylintEnabled": true,
+        "python.linting.pylintPath": "/usr/local/bin/pylint",
+        "python.linting.enabled": true,
+    },
+    "postCreateCommand": "sudo pip install pylint black",
+    "shutdownAction": "none"
+}

@@ -1,0 +1,7 @@
+{
+    "docker.host": "tcp://localhost:23750",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "python.linting.pylamaEnabled": false
+}

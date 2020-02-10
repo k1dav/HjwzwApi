@@ -1,0 +1,126 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "FastApi: runserver",
+            "type": "shell",
+            "command": "uvicorn",
+            "args": [
+                "main:app",
+                "--reload",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/backend/",
+                "env": {
+                    "PYTHONIOENCODING": "UTF-8",
+                    "LANG": "C.UTF-8",
+                }
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Flask: shell",
+            "type": "shell",
+            "command": "flask",
+            "args": [
+                "shell"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PYTHONIOENCODING": "UTF-8",
+                    "LANG": "C.UTF-8",
+                    "FLASK_APP": "backend"
+                }
+            }
+        },
+        {
+            "label": "Alembic: db init",
+            "type": "shell",
+            "command": "alembic",
+            "args": [
+                "init",
+                "migrations"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/backend/",
+                "env": {
+                    "PYTHONIOENCODING": "UTF-8",
+                    "LANG": "C.UTF-8",
+                }
+            }
+        },
+        {
+            "label": "Flask: db migrate",
+            "type": "shell",
+            "command": "flask",
+            "args": [
+                "db",
+                "migrate"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PYTHONIOENCODING": "UTF-8",
+                    "LANG": "C.UTF-8",
+                    "FLASK_APP": "backend"
+                }
+            }
+        },
+        {
+            "label": "Flask: db upgrade",
+            "type": "shell",
+            "command": "flask",
+            "args": [
+                "db",
+                "upgrade"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PYTHONIOENCODING": "UTF-8",
+                    "LANG": "C.UTF-8",
+                    "FLASK_APP": "backend"
+                }
+            },
+            "dependsOn": [
+                "Flask: db migrate"
+            ]
+        },
+        {
+            "label": "Pip: Install iPython",
+            "type": "shell",
+            "command": "sudo",
+            "args": [
+                "-H",
+                "pip",
+                "install",
+                "-U",
+                "ipython"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/notebook"
+            }
+        },
+        {
+            "label": "Jupyter: Notebook",
+            "type": "shell",
+            "command": "jupyter-notebook",
+            "args": [
+                "--no-browser",
+                "--ip=0.0.0.0",
+                "--port=8888"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/notebook/"
+            },
+            "dependsOn": [
+                "Pip: Install Jupyter"
+            ]
+        }
+    ]
+}

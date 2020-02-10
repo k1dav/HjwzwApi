@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  hjwzw_host:
+      volumes:
+        - /home/sung/Code/HjwzwApi:/workspace
+        - /home/sung/.ssh:/home/sung/.ssh
+        - /etc/localtime:/etc/localtime:ro
