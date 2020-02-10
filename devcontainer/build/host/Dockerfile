@@ -23,7 +23,7 @@ RUN apt-get update \
     && apt-get clean
 
 # Files
-COPY build/backend_host/requirements.txt /tmp/pip-tmp/
+COPY build/host/requirements.txt /tmp/pip-tmp/
 
 # Update Python environment based on requirements.txt
 RUN pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
@@ -48,5 +48,5 @@ ENV LANGUAGE="en_US.UTF-8"
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=
 
-COPY build/backend_host/startScript.sh /startScript.sh
+COPY build/host/startScript.sh /startScript.sh
 CMD ["/bin/sh", "/startScript.sh"]

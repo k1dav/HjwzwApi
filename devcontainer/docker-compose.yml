@@ -1,18 +1,18 @@
 version: '3.3'
 services:
-  redis:
+  hjwzw_redis:
     image: redis:5.0.5-buster
-    container_name: redis
+    container_name: hjwzw_redis
     restart: on-failure:5
     command: "redis-server --requirepass RedisNyv775 --appendonly yes"
     networks:
       - hjwzw-net
     volumes:
-      - redis-volume:/data
+      - hjwzw_redis-volume:/data
 
-  postgres:
+  hjwzw_postgres:
     image: postgres:11.5-alpine
-    container_name: postgres
+    container_name: hjwzw_postgres
     restart: on-failure:5
     environment:
       POSTGRES_PASSWORD: "PostNyv775"
@@ -23,7 +23,7 @@ services:
     networks:
       - hjwzw-net
     volumes:
-      - postgres-volume:/var/lib/postgresql/data
+      - hjwzw_postgres-volume:/var/lib/postgresql/data
 
   hjwzw_host:
     build:
@@ -36,8 +36,8 @@ services:
     ports:
       - "5050"
     depends_on:
-      - redis
-      - postgres
+      - hjwzw_redis
+      - hjwzw_postgres
     networks:
       - hjwzw-net
 
@@ -46,7 +46,7 @@ networks:
     external: true
 
 volumes:
-  postgres-volume:
+  hjwzw_postgres-volume:
     external: true
-  redis-volume:
+  hjwzw_redis-volume:
     external: true
