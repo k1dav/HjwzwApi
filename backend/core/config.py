@@ -23,7 +23,7 @@ ALLOWED_HOSTS: List[str] = ["*"]
 
 DB_CONNECTION: str = (
     f"postgresql://{environ.get('POSTGRES_USER')}:{environ.get('POSTGRES_PASSWORD')}"
-    f"@postgres:5432/shoppe_analysis"
+    f"@hjwzw_postgres_mac:5432/hjwzw"
 )
 DATABASE_URL: DatabaseURL = config("DB_CONNECTION", cast=DatabaseURL, default=DB_CONNECTION)
 MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)

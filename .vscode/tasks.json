@@ -47,6 +47,22 @@
                 "migrations"
             ],
             "options": {
+                "cwd": "${workspaceFolder}/backend",
+                "env": {
+                    "PYTHONIOENCODING": "UTF-8",
+                    "LANG": "C.UTF-8",
+                }
+            }
+        },
+        {
+            "label": "Alembic: db makemigrations",
+            "type": "shell",
+            "command": "alembic",
+            "args": [
+                "revision",
+                "--autogenerate"
+            ],
+            "options": {
                 "cwd": "${workspaceFolder}/backend/",
                 "env": {
                     "PYTHONIOENCODING": "UTF-8",
@@ -55,72 +71,39 @@
             }
         },
         {
-            "label": "Flask: db migrate",
+            "label": "Alembic: db migrate",
             "type": "shell",
-            "command": "flask",
+            "command": "alembic",
             "args": [
-                "db",
-                "migrate"
+                "upgrade",
+                "head"
             ],
             "options": {
-                "cwd": "${workspaceFolder}",
+                "cwd": "${workspaceFolder}/backend/",
                 "env": {
                     "PYTHONIOENCODING": "UTF-8",
                     "LANG": "C.UTF-8",
-                    "FLASK_APP": "backend"
                 }
-            }
+            },
         },
         {
-            "label": "Flask: db upgrade",
+            "label": "Alembic: db upgrade",
             "type": "shell",
-            "command": "flask",
+            "command": "alembic",
             "args": [
-                "db",
-                "upgrade"
+                "upgrade",
+                "head"
             ],
             "options": {
-                "cwd": "${workspaceFolder}",
+                "cwd": "${workspaceFolder}/backend/",
                 "env": {
                     "PYTHONIOENCODING": "UTF-8",
                     "LANG": "C.UTF-8",
-                    "FLASK_APP": "backend"
                 }
             },
             "dependsOn": [
-                "Flask: db migrate"
+                "Alembic: db makemigrations"
             ]
         },
-        {
-            "label": "Pip: Install iPython",
-            "type": "shell",
-            "command": "sudo",
-            "args": [
-                "-H",
-                "pip",
-                "install",
-                "-U",
-                "ipython"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}/notebook"
-            }
-        },
-        {
-            "label": "Jupyter: Notebook",
-            "type": "shell",
-            "command": "jupyter-notebook",
-            "args": [
-                "--no-browser",
-                "--ip=0.0.0.0",
-                "--port=8888"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}/notebook/"
-            },
-            "dependsOn": [
-                "Pip: Install Jupyter"
-            ]
-        }
     ]
 }
