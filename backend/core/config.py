@@ -10,7 +10,7 @@ from starlette.datastructures import CommaSeparatedStrings, Secret
 
 from .logging import InterceptHandler
 
-config: Config = Config(".env")
+config: Config = Config("backend/.env")
 
 VERSION: str = "0.0.1"
 API_PREFIX: str = "/api"
@@ -23,7 +23,7 @@ ALLOWED_HOSTS: List[str] = ["*"]
 
 DB_CONNECTION: str = (
     f"postgresql://{environ.get('POSTGRES_USER')}:{environ.get('POSTGRES_PASSWORD')}"
-    f"@hjwzw_postgres_mac:5432/hjwzw"
+    f"@hjwzw_postgres:5432/hjwzw"
 )
 DATABASE_URL: DatabaseURL = config("DB_CONNECTION", cast=DatabaseURL, default=DB_CONNECTION)
 MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)

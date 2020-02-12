@@ -1,6 +1,6 @@
 import databases
 
-from core.config import DATABASE_URL
+from backend.core.config import DATABASE_URL
 
 from . import base
 

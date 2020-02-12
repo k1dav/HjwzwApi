@@ -1,0 +1,7 @@
+@address = http://localhost:8000/api
+
+### 搜尋書本
+@book_title=九星
+GET {{address}}/search/books HTTP/1.1
+    ?title={{book_title}}
+Content-Type: application/json

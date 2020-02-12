@@ -19,5 +19,5 @@
         "python.linting.enabled": true,
     },
     "postCreateCommand": "sudo pip install pylint black",
-    "shutdownAction": "none"
+    "shutdownAction": "stopCompose"
 }

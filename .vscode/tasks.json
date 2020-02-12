@@ -6,36 +6,16 @@
             "type": "shell",
             "command": "uvicorn",
             "args": [
-                "main:app",
+                "backend.main:app",
                 "--reload",
             ],
             "options": {
-                "cwd": "${workspaceFolder}/backend/",
-                "env": {
-                    "PYTHONIOENCODING": "UTF-8",
-                    "LANG": "C.UTF-8",
-                }
+                "cwd": "${workspaceFolder}",
             },
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
-        },
-        {
-            "label": "Flask: shell",
-            "type": "shell",
-            "command": "flask",
-            "args": [
-                "shell"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}",
-                "env": {
-                    "PYTHONIOENCODING": "UTF-8",
-                    "LANG": "C.UTF-8",
-                    "FLASK_APP": "backend"
-                }
             }
         },
         {
@@ -48,10 +28,6 @@
             ],
             "options": {
                 "cwd": "${workspaceFolder}/backend",
-                "env": {
-                    "PYTHONIOENCODING": "UTF-8",
-                    "LANG": "C.UTF-8",
-                }
             }
         },
         {
@@ -64,10 +40,6 @@
             ],
             "options": {
                 "cwd": "${workspaceFolder}/backend/",
-                "env": {
-                    "PYTHONIOENCODING": "UTF-8",
-                    "LANG": "C.UTF-8",
-                }
             }
         },
         {
@@ -80,10 +52,6 @@
             ],
             "options": {
                 "cwd": "${workspaceFolder}/backend/",
-                "env": {
-                    "PYTHONIOENCODING": "UTF-8",
-                    "LANG": "C.UTF-8",
-                }
             },
         },
         {
@@ -96,10 +64,6 @@
             ],
             "options": {
                 "cwd": "${workspaceFolder}/backend/",
-                "env": {
-                    "PYTHONIOENCODING": "UTF-8",
-                    "LANG": "C.UTF-8",
-                }
             },
             "dependsOn": [
                 "Alembic: db makemigrations"
