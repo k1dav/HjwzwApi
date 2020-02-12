@@ -19,7 +19,7 @@ services:
       POSTGRES_USER: "admin"
       POSTGRES_DB: "hjwzw"
     ports:
-      - "5432"
+      - "5432:5432"
     networks:
       - hjwzw-net
     volumes:
