@@ -25,7 +25,9 @@ DB_CONNECTION: str = (
     f"postgresql://{environ.get('POSTGRES_USER')}:{environ.get('POSTGRES_PASSWORD')}"
     f"@hjwzw_postgres:5432/hjwzw"
 )
-DATABASE_URL: DatabaseURL = config("DB_CONNECTION", cast=DatabaseURL, default=DB_CONNECTION)
+DATABASE_URL: DatabaseURL = config(
+    "DB_CONNECTION", cast=DatabaseURL, default=DB_CONNECTION
+)
 MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)
 MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
 

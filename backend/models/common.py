@@ -1,14 +1,23 @@
-import datetime
+from sqlalchemy import Column, DateTime, text
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.sql import func
 
-from pydantic import BaseModel, validator
+DatetimeMixin = [
+    Column("created_at", DateTime, nullable=False, server_default=func.now()),
+    Column(
+        "updated_at",
+        DateTime,
+        nullable=False,
+        server_default=func.now(),
+        onupdate=func.now(),
+    ),
+]
 
-
-class DateTimeModelMixin(BaseModel):
-    created_at: datetime.datetime = None  # type: ignore
-    updated_at: datetime.datetime = None  # type: ignore
-
-    @validator("created_at", "updated_at", pre=True)
-    def default_datetime(
-        cls, value: datetime.datetime  # noqa: N805, WPS110
-    ) -> datetime.datetime:
-        return value or datetime.datetime.now()
+UUIDPrimaryKeyMixin = [
+    Column(
+        "id",
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    ),
+]

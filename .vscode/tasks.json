@@ -27,7 +27,7 @@
                 "migrations"
             ],
             "options": {
-                "cwd": "${workspaceFolder}/backend",
+                "cwd": "${workspaceFolder}",
             }
         },
         {
@@ -39,7 +39,7 @@
                 "--autogenerate"
             ],
             "options": {
-                "cwd": "${workspaceFolder}/backend/",
+                "cwd": "${workspaceFolder}",
             }
         },
         {
@@ -51,7 +51,7 @@
                 "head"
             ],
             "options": {
-                "cwd": "${workspaceFolder}/backend/",
+                "cwd": "${workspaceFolder}",
             },
         },
         {
@@ -63,7 +63,7 @@
                 "head"
             ],
             "options": {
-                "cwd": "${workspaceFolder}/backend/",
+                "cwd": "${workspaceFolder}",
             },
             "dependsOn": [
                 "Alembic: db makemigrations"
