@@ -25,3 +25,16 @@ books = Table(
         + DatetimeMixin
     ),
 )
+
+# chapters = Table(
+#     "chapters",
+#     metadata,
+#     *(
+#         UUIDPrimaryKeyMixin
+#         + [
+#             Column("chapter_id", String(16), unique=True, nullable=False),
+#             Column("followers", Text),
+#         ]
+#         + DatetimeMixin
+#     ),
+# )

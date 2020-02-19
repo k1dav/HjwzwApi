@@ -24,6 +24,23 @@ services:
       - hjwzw-net
     volumes:
       - hjwzw_postgres-volume:/var/lib/postgresql/data
+    
+  hjwzw_elasticsearch:
+    image: elasticsearch:7.6.0
+    container_name: hjwzw_elasticsearch
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    networks:
+      - hjwzw-net
+    volumes:
+      - hjwzw_elasticsearch-volume:/usr/share/elasticsearch/data
 
   hjwzw_host:
     build:
@@ -36,6 +53,7 @@ services:
     depends_on:
       - hjwzw_redis
       - hjwzw_postgres
+      - hjwzw_elasticsearch
     networks:
       - hjwzw-net
 
@@ -47,4 +65,6 @@ volumes:
   hjwzw_postgres-volume:
     external: true
   hjwzw_redis-volume:
+    external: true
+  hjwzw_elasticsearch-volume:
     external: true
