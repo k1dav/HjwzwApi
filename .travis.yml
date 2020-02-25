@@ -1,0 +1,15 @@
+language: python
+
+services:
+  - docker
+
+before_install:
+  - docker build -t $DOCKER_REPO devcontainer/build/host
+  - docker run -d -p 127.0.0.1:80:8080 $DOCKER_REPO /bin/sh -c "python"
+  - docker ps -a
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master

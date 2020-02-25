@@ -5,11 +5,6 @@ ENV PYTHONUNBUFFERED=1
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
-ENV POSTGRES_HOST=127.0.0.1:5432
-ENV POSTGRES_USER=admin
-ENV POSTGRES_PASSWORD=PostNyv775
-ENV POSTGRES_DB=hjwzw
-
 # Or your actual UID, GID on Linux if not the default 1000
 ARG USERNAME=sung
 ARG USER_UID=1000
