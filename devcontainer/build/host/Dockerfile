@@ -18,7 +18,7 @@ RUN apt-get update \
     && apt-get clean
 
 # Files
-COPY build/host/requirements.txt /tmp/pip-tmp/
+COPY requirements.txt /tmp/pip-tmp/
 
 # Update Python environment based on requirements.txt
 RUN pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
