@@ -1,12 +1,23 @@
-language: python
 cache: pip
+
+sudo: required
+language: python
+python:
+  - "3.8"
 
 services:
   - docker
 
-before_install:
-  - docker build -t $DOCKER_REPO devcontainer/build/host
-  - docker run -d -p 127.0.0.1:80:8080 $DOCKER_REPO /bin/sh -c "python"
+install:
+  - pip install -r devcontainer/build/host/requirements.txt
+
+script:
+  # unit test
+  
+after_success:
+  # script success
+  - sh .travis/deploy_dockerhub.sh
+  - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
 
 before_deploy:
   provider: script
