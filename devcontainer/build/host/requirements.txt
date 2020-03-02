@@ -4,10 +4,10 @@ beautifulsoup4~=4.8.2
 databases[postgresql]~=0.2.6
 email_validator~=1.0.5
 fastapi~=0.45.0
-flake8
 graphene~=2.1.8
 loguru~=0.4.1
 pandas~=0.25.1
+pylint
 python-multipart~=0.0.5
 requests~=2.22.0
 ujson~=1.35

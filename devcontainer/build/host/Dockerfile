@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED=1
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Or your actual UID, GID on Linux if not the default 1000
-ARG USERNAME=root
+ARG USERNAME=sung
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 
