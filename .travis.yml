@@ -1,4 +1,7 @@
-cache: pip
+cache: 
+  - pip
+  directories:
+    - docker_images
 
 sudo: required
 language: python
@@ -8,6 +11,12 @@ python:
 services:
   - docker
 
+before_install:
+  - docker load -i docker_images/images.tar || true
+
+before_cache:
+  - docker save -o docker_images/images.tar $(docker images -a -q)
+  
 install:
   - pip install -r devcontainer/build/host/requirements.txt
 
@@ -17,11 +26,11 @@ script:
 after_success:
   # script success
   - sh .travis/deploy_dockerhub.sh
-  - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
+  # - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
 
-# deploy:
-#   provider: heroku
-#   api_key: 
-#     secure: $HEROKU_KEY
-#     app: hjwzw-noval
+deploy:
+  provider: heroku
+  api_key: 
+    secure: $HEROKU_KEY
+    app: hjwzw-noval
     
