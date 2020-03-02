@@ -1,7 +1,8 @@
 cache: 
-  - pip
   directories:
     - docker_images
+  - pip
+  
 
 sudo: required
 language: python
