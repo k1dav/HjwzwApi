@@ -12,12 +12,12 @@ install:
   - pip install -r devcontainer/build/host/requirements.txt
 
 script:
-  - pylint backend/ --exit-zero # exit zero 否則會錯
+  - pylint backend/ --exit-zero
   
 after_success:
   # script success
   - sh .travis/deploy_dockerhub.sh
-  # - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
+  - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
 
 # deploy:
 #   provider: heroku
