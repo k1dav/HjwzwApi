@@ -12,20 +12,20 @@ install:
   - pip install -r devcontainer/build/host/requirements.txt
 
 script:
-  # unit test
+  - flake
   
-after_success:
-  # script success
-  - sh .travis/deploy_dockerhub.sh
-  - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
+# after_success:
+#   # script success
+#   - sh .travis/deploy_dockerhub.sh
+#   - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
 
-before_deploy:
-  provider: script
-  script: bash docker_push.sh
+# before_deploy:
+#   provider: script
+#   script: bash docker_push.sh
   
-deploy:
-  provider: heroku
-  api_key: 
-    secure: $HEROKU_KEY
-    app: hjwzw-noval
+# deploy:
+#   provider: heroku
+#   api_key: 
+#     secure: $HEROKU_KEY
+#     app: hjwzw-noval
     
