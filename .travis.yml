@@ -12,7 +12,7 @@ install:
   - pip install -r devcontainer/build/host/requirements.txt
 
 script:
-  - flake
+  - flake8 backend/
   
 # after_success:
 #   # script success
