@@ -26,11 +26,4 @@ script:
   
 after_success:
   - sh .travis/deploy_dockerhub.sh
-  # - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
-
-deploy:
-  provider: heroku
-  api_key: 
-    secure: $HEROKU_KEY
-    app: hjwzw-noval
-    
+  - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
