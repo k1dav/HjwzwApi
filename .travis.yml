@@ -1,5 +1,4 @@
 cache: 
-  pip
   directories:
     - docker_images
   
