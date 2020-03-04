@@ -1,1 +1,1 @@
-python3
+uvicorn backend.main:app --reload
